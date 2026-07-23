@@ -1,0 +1,6 @@
+# Single bootable ext4 rootfs on the microSD.
+# U-Boot distro-boot scans mmc for /boot/extlinux/extlinux.conf on this partition
+# (matches UBOOT_EXTLINUX_ROOT=root=/dev/mmcblk0p1 in the machine conf).
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label root --align 4096 --size 4096
+
+bootloader --append="console=ttyS0,115200 net.ifnames=0"
