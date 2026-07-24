@@ -48,7 +48,9 @@ You only need this to install U-Boot + early firmware. From then on, U-Boot's
 
 ## Building (EmbedForge / bitbake)
 
-- `MACHINE = "jetson-nano-mainline"`
+- `MACHINE = "p3450-mainline"`  (the Nano's carrier part number; named to stay
+  clear of tooling that auto-attaches the L4T `meta-tegra` BSP for `jetson*`/`nano`
+  machine names — this path deliberately does not use meta-tegra)
 - Layers: this layer + poky (openembedded-core, meta-poky, meta-yocto-bsp).
   Add `meta-openembedded` (meta-oe/meta-python/meta-networking) if your packages
   need it.
@@ -62,7 +64,7 @@ iteration against the first boot log:
 
 1. **`recipes-kernel/linux/linux-yocto/tegra210.cfg`** — the config fragment.
    Confirm serial console, SD, USB, and especially **on-board ethernet** come up.
-2. **extlinux / DTB path** in `conf/machine/jetson-nano-mainline.conf` — verify
+2. **extlinux / DTB path** in `conf/machine/p3450-mainline.conf` — verify
    U-Boot finds `/boot/extlinux/extlinux.conf` and loads the `nvidia/` DTB.
 
 Iterate using build logs + the board's serial console.
